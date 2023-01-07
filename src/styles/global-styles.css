@@ -1,21 +1,66 @@
+:root {
+  --default-input-width: 55.2rem;
+  --default-input-height: 5.3rem;
+  --display-1: 5.6rem;
+  --display-2: 4rem;
+  --display-3: 3.2rem;
+  --heading-1: 2.4rem;
+  --heading-2: 2rem;
+  --p-large: 1.6rem;
+  --p-medium: 1.4rem;
+  --p-small: 1.2rem;
+  --btn-large: 1.8rem;
+  --btn-medium: 1.6rem;
+  --btn-small: 1.4rem
+
+  --ink-dark: #3C3A36;
+  --ink-dark-gray: #78746D;
+  --ink-gray: #BEBAB3
+  --ink-light-gray: #FFF5EE;
+  --ink-white: #FFFFFF;
+
+  --color-primary: #82327E;
+  --color-secondary: #65AAEA;
+  --color-success: #5BA092;
+  --color-error: #EF4949;
+  --color-warning: #F2A03F;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+
+button:focus {
+  outline: none;
 }
 
 html {
   font-size: 62.5%;
 }
 
-h1, h2, h3, h4, h5, h6, p, input, label {
-  color: #3C3A36
+h1, h2, h3, h4, h5, h6, p, input, label, a {
+  color: var(--ink-dark)
+}
+
+h2, h3, h4, h5, h6, button {
+  font-weight: 500;
 }
 
 h1 {
   font-size: 5.6rem;
   line-height: 105%;
   font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {

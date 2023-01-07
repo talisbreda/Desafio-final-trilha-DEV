@@ -1,0 +1,14 @@
+.defaultButton {
+  width: var(--default-input-width);
+  height: 5.6rem;
+  border-radius: var(--p-small);
+  border: none;
+  background-color: #82327E;
+  color: white;
+  font-size: var(--btn-medium);
+}
+
+.defaultButton:hover {
+  background-color: #5E235B;
+  cursor: pointer;
+}

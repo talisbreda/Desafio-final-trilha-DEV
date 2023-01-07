@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import icon from '../../assets/images/quiz-icon.svg';
 import { InputField } from '../../components/InputField';
+import { Button } from '../../components/Button';
 
 export const LoginPage = () => {
   return (
@@ -13,8 +14,9 @@ export const LoginPage = () => {
         <h1>Entrar</h1>
         <InputField placeholder='E-mail' />
         <InputField placeholder='Password' />
-        <p>Esqueceu sua senha?</p>
-        <p>Criar uma conta</p>
+        <a href='/'>Esqueceu sua senha?</a>
+        <Button text='Entrar' />
+        <a href='/'>Criar uma conta</a>
       </div>
     </div>
   );

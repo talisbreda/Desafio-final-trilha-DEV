@@ -1,8 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 input {
-  width: 80%;
-  height: 5.3rem;
-  padding: 1.6rem;
-  border-radius: 1.6rem;
+  width: var(--default-input-width);
+  height: var(--default-input-height);
+  padding: 1.47rem;
+  border-radius: var(--p-small);
   border: 1px solid #BEBAB3
 }
 
@@ -13,4 +19,23 @@ input:focus {
 ::placeholder {
   color: #78746D;
   opacity: 0.8;
+  font-size: var(--p-large)
 }
+
+.button-show-hide {
+  display: flex;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  margin: 0 var(--p-large)
+}
+
+.button-show-hide:hover {
+  cursor: pointer;
+}
+
+.show-hide, .button-show-hide {
+  position: absolute;
+  width: 24px;
+}
+
