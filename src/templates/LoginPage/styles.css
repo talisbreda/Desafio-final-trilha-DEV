@@ -1,9 +1,5 @@
 .wrapper {
-  height: 100vh;
   margin: 0 14rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .image-container, .input-container {

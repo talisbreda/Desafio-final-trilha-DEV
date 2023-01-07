@@ -3,7 +3,13 @@ import './styles.css';
 import show from '../../assets/images/show-password.svg';
 import hide from '../../assets/images/hide-password.svg';
 
-export const InputField = ({ placeholder }: { placeholder: string }) => {
+export const InputField = ({
+  placeholder,
+  type = 'text',
+}: {
+  placeholder: string;
+  type?: string;
+}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const visibilityIcon = passwordVisible ? hide : show;
 
@@ -22,11 +28,11 @@ export const InputField = ({ placeholder }: { placeholder: string }) => {
   return (
     <div className='container'>
       <input
-        className={`${placeholder.toLowerCase()}-input`}
+        className={`${type.toLowerCase()}-input input-text input-field`}
         placeholder={placeholder}
-        type={placeholder.replace('-', '')}
+        type={type}
       />
-      {placeholder.toLowerCase() === 'password' && (
+      {type === 'password' && (
         <button
           onClick={setPasswordVisibility}
           type='button'
@@ -37,4 +43,8 @@ export const InputField = ({ placeholder }: { placeholder: string }) => {
       )}
     </div>
   );
+};
+
+InputField.defaultProps = {
+  type: 'text',
 };

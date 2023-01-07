@@ -1,0 +1,12 @@
+.register-wrapper {
+  flex-direction: column;
+  gap: var(--p-large)
+}
+
+.register-p {
+  color: var(--ink-dark-gray)
+}
+
+.back-to-login {
+  color: var(--ink-dark-gray);
+}

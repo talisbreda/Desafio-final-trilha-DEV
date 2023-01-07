@@ -52,11 +52,11 @@ h2, h3, h4, h5, h6, button {
 h1 {
   font-size: 5.6rem;
   line-height: 105%;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 p {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 a {
@@ -76,3 +76,94 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.display1 {
+  font-size: 5.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.display2 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.display3 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.heading1 {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.heading2 {
+  font-size: 2rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.p-large {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.p-medium {
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 400;
+}
+
+.p-small {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+}
+
+.btn-large {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.btn-medium {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+}
+
+.btn-small {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+}
+
+.input-text {
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+}
+
+.input-search {
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+
+}
+

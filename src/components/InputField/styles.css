@@ -4,7 +4,7 @@
   justify-content: flex-end;
 }
 
-input {
+.input-field {
   width: var(--default-input-width);
   height: var(--default-input-height);
   padding: 1.47rem;
@@ -12,7 +12,7 @@ input {
   border: 1px solid #BEBAB3
 }
 
-input:focus {
+.input-field:focus {
   outline: none;
 }
 
