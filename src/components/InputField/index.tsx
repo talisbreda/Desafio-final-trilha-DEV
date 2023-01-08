@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles.css';
 import show from '../../assets/images/show-password.svg';
 import hide from '../../assets/images/hide-password.svg';
+import { globalContext } from '../../contexts/UserDataContext';
 
 export const InputField = ({
   placeholder,
-  type = 'text',
+  type,
 }: {
   placeholder: string;
-  type?: string;
+  type: 'name' | 'email' | 'password';
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const visibilityIcon = passwordVisible ? hide : show;
@@ -25,12 +26,16 @@ export const InputField = ({
     }
   };
 
+  const context = useContext(globalContext);
+  const { setData } = context;
+
   return (
     <div className='container'>
       <input
         className={`${type.toLowerCase()}-input input-text input-field`}
         placeholder={placeholder}
         type={type}
+        onChange={(s) => setData[type](s.target.value)}
       />
       {type === 'password' && (
         <button
@@ -43,8 +48,4 @@ export const InputField = ({
       )}
     </div>
   );
-};
-
-InputField.defaultProps = {
-  type: 'text',
 };

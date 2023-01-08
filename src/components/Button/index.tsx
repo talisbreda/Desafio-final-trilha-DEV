@@ -3,12 +3,18 @@ import './styles.css';
 export const Button = ({
   text,
   textSize,
+  onClick,
 }: {
   text: string;
   textSize?: string;
+  onClick: () => Promise<void>;
 }) => {
   return (
-    <button type='button' className={`defaultButton ${textSize}`}>
+    <button
+      onClick={onClick}
+      type='button'
+      className={`defaultButton ${textSize}`}
+    >
       {text}
     </button>
   );

@@ -53,6 +53,7 @@ module.exports = {
     ],
     'react/function-component-definition': 'off',
     'import/prefer-default-export': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
