@@ -11,11 +11,11 @@
   --p-small: 1.2rem;
   --btn-large: 1.8rem;
   --btn-medium: 1.6rem;
-  --btn-small: 1.4rem
+  --btn-small: 1.4rem;
 
   --ink-dark: #3C3A36;
   --ink-dark-gray: #78746D;
-  --ink-gray: #BEBAB3
+  --ink-gray: #BEBAB3;
   --ink-light-gray: #FFF5EE;
   --ink-white: #FFFFFF;
 
@@ -126,7 +126,7 @@ code {
 .p-medium {
   font-size: 1.4rem;
   line-height: 2.1rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .p-small {

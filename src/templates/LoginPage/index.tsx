@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 import icon from '../../assets/images/quiz-icon.svg';
 import { InputField } from '../../components/InputField';
@@ -9,9 +9,11 @@ import { globalContext } from '../../contexts/UserDataContext';
 
 export const LoginPage = () => {
   const { email, password } = useContext(globalContext);
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     await login(email, password);
+    navigate('/home');
   };
 
   return (
