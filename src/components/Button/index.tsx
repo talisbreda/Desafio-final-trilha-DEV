@@ -7,7 +7,7 @@ export const Button = ({
 }: {
   text: string;
   textSize?: string;
-  onClick: () => Promise<void>;
+  onClick: () => Promise<void> | void;
 }) => {
   return (
     <button

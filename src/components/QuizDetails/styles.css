@@ -1,0 +1,19 @@
+.details-wrapper {
+  flex-direction: column;
+  margin: 0 44.5rem;
+  gap: 2.5rem;
+}
+
+.quiz-image {
+  width: 55.3rem;
+}
+
+.quiz-details {
+  width: 100%;
+}
+
+.quiz-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

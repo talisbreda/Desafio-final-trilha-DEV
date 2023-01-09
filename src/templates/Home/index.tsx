@@ -6,8 +6,8 @@ import './styles.css';
 
 export const Home = () => {
   const isMounted = useRef(true);
-
   const quizzes = useRef([]);
+
   useEffect(() => {
     getQuizzes().then((data) => {
       if (isMounted.current) {
@@ -18,7 +18,7 @@ export const Home = () => {
     return () => {
       isMounted.current = false;
     };
-  }, [quizzes]);
+  });
 
   return (
     <div className='wrapper home-wrapper'>
