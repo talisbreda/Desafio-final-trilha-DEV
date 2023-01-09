@@ -1,21 +1,26 @@
 import './styles.css';
-import cardImage from '../../assets/images/card-image.svg';
+import { Quiz } from '../../utils/getQuizzes';
 
-export const Card = () => {
+export const Card = ({ data }: { data: Quiz }) => {
+  const difficultyColor =
+    data.difficulty === 'easy'
+      ? 'var(--color-secondary)'
+      : 'var(--color-error)';
+
   return (
     <div className='wrapper card-wrapper'>
       <div className='card-image-container'>
-        <img className='card-image' src={cardImage} alt='card' />
+        <img className='card-image' src={data.banner_image} alt='card' />
         <div
           className='difficulty btn-small'
-          style={{ background: 'var(--color-secondary)' }}
+          style={{ background: difficultyColor }}
         >
-          FÁCIL
+          {data.difficulty.toUpperCase()}
         </div>
       </div>
       <div className='card-text-container'>
-        <h4 className='heading1'>UI</h4>
-        <p className='p-medium'>Questões sobre interface</p>
+        <h4 className='heading1'>{data.title}</h4>
+        <p className='p-medium'>{data.short_description}</p>
       </div>
     </div>
   );
