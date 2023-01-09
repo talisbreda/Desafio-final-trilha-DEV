@@ -1,7 +1,8 @@
 .details-wrapper {
   flex-direction: column;
-  margin: 0 44.5rem;
   gap: 2.5rem;
+  width: 55.3rem;
+  margin: 0 auto;
 }
 
 .quiz-image {
@@ -16,4 +17,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.back-button {
+  position: fixed;
+  margin: 36px 75px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+}
+
+.back-button > img {
+  width: 100%;
 }

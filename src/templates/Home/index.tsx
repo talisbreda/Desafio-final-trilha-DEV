@@ -18,7 +18,7 @@ export const Home = () => {
     return () => {
       isMounted.current = false;
     };
-  });
+  }, []);
 
   return (
     <div className='wrapper home-wrapper'>
