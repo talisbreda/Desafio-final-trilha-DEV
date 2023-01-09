@@ -1,0 +1,18 @@
+div.header-wrapper {
+  height: 12rem;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.header-options {
+  display: flex;
+  justify-content: center;
+  gap: 3rem
+}
+
+.header-options > a, .header-options > p {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}

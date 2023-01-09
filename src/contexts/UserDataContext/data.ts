@@ -2,6 +2,7 @@ type AuthSetters = {
   name: (name: string) => void;
   email: (email: string) => void;
   password: (password: string) => void;
+  search: (value: string) => void;
 };
 
 export type UserData = {
@@ -24,6 +25,9 @@ export const data: UserData = {
     },
     password: (password) => {
       data.password = password;
+    },
+    search: (value) => {
+      data.name = value;
     },
   },
 };

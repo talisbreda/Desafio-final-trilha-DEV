@@ -17,7 +17,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className='wrapper'>
+    <div className='wrapper login-wrapper'>
       <div className='image-container'>
         <img src={icon} alt='ícone do quiz' />
       </div>
