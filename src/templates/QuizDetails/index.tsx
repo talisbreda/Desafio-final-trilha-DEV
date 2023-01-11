@@ -1,11 +1,12 @@
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
-import image from '../../assets/images/card-image.svg';
 import back from '../../assets/images/back.svg';
-import { Button } from '../Button';
-import { Difficulty } from '../Difficulty';
+import { Button } from '../../components/Button';
+import { Difficulty } from '../../components/Difficulty';
+import { initialState } from '../../contexts/QuizContext';
 
 export const QuizDetails = () => {
+  const quiz = initialState.currentQuiz;
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -18,23 +19,18 @@ export const QuizDetails = () => {
         <img src={back} alt='back' />
       </button>
       <div className='wrapper details-wrapper'>
-        <h1 className='display2'>HTML</h1>
+        <h1 className='display2'>{quiz.title}</h1>
         <div className='quiz-image-container'>
-          <img className='quiz-image' src={image} alt='card' />
-          <Difficulty difficulty='easy' />
+          <img className='quiz-image' src={quiz.banner_image} alt='card' />
+          <Difficulty difficulty={quiz.difficulty} />
         </div>
         <div className='quiz-details about-quiz'>
           <h2 className='heading2'>Sobre o quiz</h2>
-          <p className='p-medium'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-            dignissimos officia mollitia quibusdam atque id magni qui at
-            similique obcaecati, velit voluptas unde temporibus nam voluptatum
-            eligendi sequi doloremque tempora.
-          </p>
+          <p className='p-medium'>{quiz.description}</p>
         </div>
         <div className='quiz-details questions-amount'>
           <h2 className='heading2'>Quantidade de perguntas</h2>
-          <p className='p-medium'>10</p>
+          <p className='p-medium'>{quiz.questions_count}</p>
         </div>
         <Button onClick={handleClick} text='Fazer Tentativa' />
       </div>

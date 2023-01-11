@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { QuizDetails } from './components/QuizDetails';
+import { QuizDetails } from './templates/QuizDetails';
 import { UserDataContext } from './contexts/UserDataContext';
 import './styles/global-styles.css';
 import { Home } from './templates/Home';

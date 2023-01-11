@@ -1,3 +1,5 @@
+import './styles.css';
+
 export const Difficulty = ({ difficulty }: { difficulty: string }) => {
   const difficultyColor =
     difficulty === 'easy' ? 'var(--color-secondary)' : 'var(--color-error)';

@@ -6,7 +6,7 @@ import './styles.css';
 export const Recover = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/recover');
+    navigate('/login');
   };
 
   return (

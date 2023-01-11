@@ -1,22 +1,22 @@
 .details-wrapper {
   flex-direction: column;
   gap: 2.5rem;
-  width: 55.3rem;
   margin: 0 auto;
 }
 
-.quiz-image {
+.details-wrapper > * {
   width: 55.3rem;
-}
-
-.quiz-details {
-  width: 100%;
 }
 
 .quiz-image-container {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.quiz-image {
+  width: 100%;
 }
 
 .back-button {

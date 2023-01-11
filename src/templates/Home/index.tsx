@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
 import {
+  initialState,
   QuizContextProvider,
   useQuizContext,
 } from '../../contexts/QuizContext';
@@ -11,6 +13,7 @@ import './styles.css';
 export const Home = () => {
   const isMounted = useRef(true);
   const { quizzes, setQuizzes } = useQuizContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isMounted.current) {
@@ -22,6 +25,11 @@ export const Home = () => {
     };
   });
 
+  const handleQuizClick = (quiz: Quiz) => {
+    initialState.currentQuiz = quiz;
+    navigate('/quiz');
+  };
+
   return (
     <QuizContextProvider>
       <div className='wrapper home-wrapper'>
@@ -30,7 +38,11 @@ export const Home = () => {
         </div>
         <div className='cards-container'>
           {quizzes.map((quiz: Quiz) => (
-            <Card key={quiz.id} data={quiz} />
+            <Card
+              key={quiz.id}
+              onClick={() => handleQuizClick(quiz)}
+              data={quiz}
+            />
           ))}
         </div>
       </div>

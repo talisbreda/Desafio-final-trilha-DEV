@@ -1,9 +1,10 @@
-div.header-wrapper {
+.header-wrapper {
   height: 12rem;
   width: 100%;
   max-width: 1144px;
   justify-content: space-between;
-  margin: 0;
+  align-items: flex-end;
+  padding: 0 0 2.6rem 0
 }
 
 .header-options {
