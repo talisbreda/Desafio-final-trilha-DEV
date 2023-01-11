@@ -1,5 +1,6 @@
 .login-wrapper {
-  margin: 0 14rem;
+  width: 100vw;
+  max-width: 1144px;
 }
 
 .image-container, .input-container {
@@ -25,4 +26,11 @@ img {
 a {
   font-size: var(--p-large);
   font-weight: 500;
+}
+
+@media (max-width: 1104px) {
+  .login-wrapper {
+    flex-direction: column;
+    gap: 4rem
+  }
 }
