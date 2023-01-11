@@ -6,6 +6,7 @@ import { UserDataContext } from './contexts/UserDataContext';
 import './styles/global-styles.css';
 import { Home } from './templates/Home';
 import { LoginPage } from './templates/LoginPage/index';
+import { Recover } from './templates/Recover';
 import { RegisterPage } from './templates/RegisterPage';
 
 const root = ReactDOM.createRoot(
@@ -18,6 +19,7 @@ root.render(
         <Route path='/' element={<LoginPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/recover' element={<Recover />} />
         <Route path='/home' element={<Home />} />
         <Route path='/quiz' element={<QuizDetails />} />
       </Routes>

@@ -25,7 +25,7 @@ export const LoginPage = () => {
         <h1 className='display1'>Entrar</h1>
         <InputField placeholder='E-mail' type='email' />
         <InputField placeholder='Password' type='password' />
-        <Link className='btn-medium' to='/'>
+        <Link className='btn-medium' to='/recover'>
           Esqueceu sua senha?
         </Link>
         <Button onClick={handleClick} text='Entrar' />
