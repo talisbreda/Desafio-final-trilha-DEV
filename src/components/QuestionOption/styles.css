@@ -1,0 +1,17 @@
+.option-container {
+  width: var(--default-input-width);
+  height: var(--default-input-height);
+  padding: 1.47rem;
+  border-radius: var(--p-small);
+  border: 1px solid var(--ink-gray);
+  display: flex;
+  gap: 16px;
+  padding: 0 24px;
+  cursor: pointer;
+}
+
+.option-container > div {
+  display: flex;
+  align-items: center;
+  color: var(--ink-dark);
+}

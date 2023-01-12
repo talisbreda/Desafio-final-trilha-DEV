@@ -26,7 +26,7 @@ export const Home = () => {
 
   const handleQuizClick = (quiz: Quiz) => {
     quizzesState.currentQuiz = quiz;
-    navigate('/quiz');
+    navigate('/details');
   };
 
   const counter = useRef(0);

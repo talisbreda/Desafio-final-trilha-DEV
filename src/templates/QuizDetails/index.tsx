@@ -1,23 +1,21 @@
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
-import back from '../../assets/images/back.svg';
 import { Button } from '../../components/Button';
 import { Difficulty } from '../../components/Difficulty';
 import { quizzesState } from '../../contexts/QuizContext';
+import { BackButton } from '../../components/BackButton';
 
 export const QuizDetails = () => {
   const quiz = quizzesState.currentQuiz;
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/home');
+  const startQuiz = () => {
+    navigate('/quiz');
   };
 
   return (
     <>
-      <button onClick={handleClick} className='back-button' type='button'>
-        <img src={back} alt='back' />
-      </button>
+      <BackButton to='/home' />
       <div className='wrapper details-wrapper'>
         <h1 className='display2'>{quiz.title}</h1>
         <div className='quiz-image-container'>
@@ -32,7 +30,7 @@ export const QuizDetails = () => {
           <h2 className='heading2'>Quantidade de perguntas</h2>
           <p className='p-medium'>{quiz.questions_count}</p>
         </div>
-        <Button onClick={handleClick} text='Fazer Tentativa' />
+        <Button onClick={startQuiz} text='Fazer Tentativa' />
       </div>
     </>
   );

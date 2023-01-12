@@ -9,7 +9,7 @@
   height: var(--default-input-height);
   padding: 1.47rem;
   border-radius: var(--p-small);
-  border: 1px solid #BEBAB3
+  border: 1px solid var(--ink-gray)
 }
 
 .input-field:focus {
@@ -17,7 +17,7 @@
 }
 
 ::placeholder {
-  color: #78746D;
+  color: var(--ink-dark-gray);
   opacity: 0.8;
   font-size: var(--p-large)
 }
