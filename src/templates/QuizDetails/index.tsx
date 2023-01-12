@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import back from '../../assets/images/back.svg';
 import { Button } from '../../components/Button';
 import { Difficulty } from '../../components/Difficulty';
-import { initialState } from '../../contexts/QuizContext';
+import { quizzesState } from '../../contexts/QuizContext';
 
 export const QuizDetails = () => {
-  const quiz = initialState.currentQuiz;
+  const quiz = quizzesState.currentQuiz;
   const navigate = useNavigate();
 
   const handleClick = () => {

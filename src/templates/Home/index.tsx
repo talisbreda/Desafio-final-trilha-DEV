@@ -2,20 +2,20 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
-import { initialState } from '../../contexts/QuizContext';
+import { quizzesState } from '../../contexts/QuizContext';
 import { getQuizzes, Quiz } from '../../utils/getQuizzes';
 import './styles.css';
 
 export const Home = () => {
   const isMounted = useRef(true);
   const navigate = useNavigate();
-  const [quizzes, setQuizzes] = useState(initialState.quizzes);
+  const [quizzes, setQuizzes] = useState(quizzesState.quizzes);
 
   useEffect(() => {
     if (isMounted.current && quizzes.length === 0) {
       getQuizzes().then((r) => {
         setQuizzes(r.data);
-        initialState.quizzes = r.data;
+        quizzesState.quizzes = r.data;
       });
     }
 
@@ -25,7 +25,7 @@ export const Home = () => {
   }, [quizzes]);
 
   const handleQuizClick = (quiz: Quiz) => {
-    initialState.currentQuiz = quiz;
+    quizzesState.currentQuiz = quiz;
     navigate('/quiz');
   };
 
