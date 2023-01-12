@@ -33,6 +33,11 @@
   font-family: 'Rubik', sans-serif;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 button:focus {
   outline: none;
 }

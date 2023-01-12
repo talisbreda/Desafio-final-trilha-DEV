@@ -13,8 +13,41 @@
   gap: 3rem
 }
 
-.header-options > a, .header-options > p {
+.header-options > a, .header-options > button {
   display: flex;
   align-items: flex-end;
   cursor: pointer;
+}
+
+.theme-menu {
+  position: absolute;
+  top: 100px;
+  right: 456px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+.theme-option {
+  width: 145px;
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--ink-gray);
+  transition: 200ms ease-in-out;
+}
+
+.theme-option:nth-child(1) {
+  border-radius: 8px 8px 0 0;
+}
+
+.theme-option:nth-child(4) {
+  border: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.theme-option:hover {
+  background-color: var(--ink-light-gray);
 }

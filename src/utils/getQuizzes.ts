@@ -16,8 +16,7 @@ export type Quiz = {
 };
 
 export const getQuizzes = async () => {
-  const { data } = await axios.get(
+  return axios.get(
     'https://my-json-server.typicode.com/higorpo/trilha-dev-json-server/quizzes',
   );
-  return data;
 };
