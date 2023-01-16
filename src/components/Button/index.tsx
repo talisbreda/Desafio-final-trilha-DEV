@@ -3,10 +3,12 @@ import './styles.css';
 export const Button = ({
   text,
   textSize,
+  width,
   onClick,
 }: {
   text: string;
   textSize?: string;
+  width?: string;
   onClick: () => Promise<void> | void;
 }) => {
   return (
@@ -14,6 +16,7 @@ export const Button = ({
       onClick={onClick}
       type='button'
       className={`defaultButton ${textSize}`}
+      style={{ width }}
     >
       {text}
     </button>
@@ -22,4 +25,5 @@ export const Button = ({
 
 Button.defaultProps = {
   textSize: 'btn-medium',
+  width: 'var(--default-input-width)',
 };

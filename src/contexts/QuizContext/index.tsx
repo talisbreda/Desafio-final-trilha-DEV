@@ -3,6 +3,7 @@ import { Quiz } from '../../utils/getQuizzes';
 
 type QuizState = {
   answered: boolean;
+  correctAnswers: number;
   currentQuiz: Quiz;
   questions: Questions;
   quizzes: Array<Quiz>;
@@ -10,6 +11,7 @@ type QuizState = {
 
 export const quizzesState: QuizState = {
   answered: false,
+  correctAnswers: 0,
   currentQuiz: {
     id: '',
     title: '',

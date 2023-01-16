@@ -1,0 +1,27 @@
+.results-wrapper {
+  flex-direction: column;
+  gap: 7rem
+}
+
+.results-wrapper > * {
+  width: 35.8rem
+}
+
+.result-container, .result-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-container {
+  gap: 4rem
+}
+
+.result-text-container {
+  gap: 0.8rem
+}
+
+.result-text {
+   text-align: center;
+   color: var(--ink-dark-gray)
+}
+

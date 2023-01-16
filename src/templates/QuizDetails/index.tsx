@@ -9,6 +9,7 @@ import { getQuizQuestions } from '../../utils/getQuizQuestions';
 export const QuizDetails = () => {
   const quiz = quizzesState.currentQuiz;
   quizzesState.answered = false;
+  quizzesState.correctAnswers = 0;
   const navigate = useNavigate();
 
   getQuizQuestions(quiz.id).then((r) => {
