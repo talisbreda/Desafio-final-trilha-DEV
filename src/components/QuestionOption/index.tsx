@@ -1,3 +1,4 @@
+import { quizzesState } from '../../contexts/QuizContext';
 import './styles.css';
 
 export const QuestionOption = ({
@@ -15,12 +16,14 @@ export const QuestionOption = ({
   const borderOnClick = correct ? 'var(--color-success)' : 'var(--color-error)';
 
   const handleClick = () => {
-    const container = document.querySelector(
-      `.answer${index}`,
-    ) as HTMLDivElement;
-    container.style.border = `1px solid ${borderOnClick}`;
-    container.style.background = 'var(--ink-light-gray)';
-    onClick();
+    if (!quizzesState.answered) {
+      const container = document.querySelector(
+        `.answer${index}`,
+      ) as HTMLDivElement;
+      container.style.border = `2px solid ${borderOnClick}`;
+      container.style.background = 'var(--ink-light-gray)';
+      onClick();
+    }
   };
 
   return (

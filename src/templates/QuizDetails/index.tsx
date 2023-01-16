@@ -4,10 +4,16 @@ import { Button } from '../../components/Button';
 import { Difficulty } from '../../components/Difficulty';
 import { quizzesState } from '../../contexts/QuizContext';
 import { BackButton } from '../../components/BackButton';
+import { getQuizQuestions } from '../../utils/getQuizQuestions';
 
 export const QuizDetails = () => {
   const quiz = quizzesState.currentQuiz;
+  quizzesState.answered = false;
   const navigate = useNavigate();
+
+  getQuizQuestions(quiz.id).then((r) => {
+    quizzesState.questions = r.data;
+  });
 
   const startQuiz = () => {
     navigate('/quiz');

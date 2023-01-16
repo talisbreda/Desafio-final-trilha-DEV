@@ -36,7 +36,6 @@ export const Home = () => {
     <div className='wrapper home-wrapper'>
       <div className='header-container'>
         <Header />
-        {counter.current}
       </div>
       <div className='cards-container'>
         {quizzes.map((quiz: Quiz) => {

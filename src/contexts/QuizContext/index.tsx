@@ -2,12 +2,14 @@ import { Questions } from '../../utils/getQuizQuestions';
 import { Quiz } from '../../utils/getQuizzes';
 
 type QuizState = {
+  answered: boolean;
   currentQuiz: Quiz;
   questions: Questions;
   quizzes: Array<Quiz>;
 };
 
 export const quizzesState: QuizState = {
+  answered: false,
   currentQuiz: {
     id: '',
     title: '',

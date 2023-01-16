@@ -1,32 +1,30 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { quizzesState } from '../../contexts/QuizContext';
 import './styles.css';
 import { QuestionOption } from '../../components/QuestionOption';
-import { getQuizQuestions } from '../../utils/getQuizQuestions';
+import { Button } from '../../components/Button';
 
 export const QuizPage = () => {
-  const quiz = quizzesState.currentQuiz;
-  const isMounted = useRef(true);
-  const [questions, setQuestions] = useState(quizzesState.questions);
   const questionIndex = useRef(0);
+  const { questions } = quizzesState;
+  const [answered, setAnswered] = useState(quizzesState.answered);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    questions.data[questionIndex.current],
+  );
+  const correctAnswer = currentQuestion.correct_answer_index;
   let counter = 0;
-  const answered = useRef(false);
 
-  useEffect(() => {
-    if (isMounted.current) {
-      getQuizQuestions(quiz.id).then((r) => {
-        setQuestions(r.data);
-      });
-    }
-  }, [quiz.id]);
-
-  const questionAnswered = () => {
-    answered.current = true;
+  const setQuestionAsAnswered = () => {
+    setAnswered(true);
+    quizzesState.answered = true;
   };
 
-  const currentQuestion = questions.data[questionIndex.current];
-  const correctAnswer = currentQuestion.correct_answer_index;
+  const goToNextQuestion = () => {
+    questionIndex.current += 1;
+    quizzesState.answered = false;
+    setCurrentQuestion(questions.data[questionIndex.current]);
+  };
 
   return (
     <>
@@ -53,10 +51,11 @@ export const QuizPage = () => {
               index={counter}
               text={answer}
               correct={counter === correctAnswer}
-              onClick={questionAnswered}
+              onClick={setQuestionAsAnswered}
             />
           );
         })}
+        {answered && <Button onClick={goToNextQuestion} text='Continuar' />}
       </div>
     </>
   );
