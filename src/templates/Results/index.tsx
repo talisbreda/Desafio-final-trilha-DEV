@@ -7,7 +7,10 @@ import './styles.css';
 export const Results = () => {
   const { correctAnswers, currentQuiz } = quizzesState;
   const navigate = useNavigate();
-  currentQuiz.correct_answers_count = correctAnswers;
+  if (correctAnswers > currentQuiz.correct_answers_count) {
+    currentQuiz.correct_answers_count = correctAnswers;
+    currentQuiz.answered_date = new Date().toISOString().slice(0, 10);
+  }
 
   const acedQuiz = correctAnswers === currentQuiz.questions_count;
 

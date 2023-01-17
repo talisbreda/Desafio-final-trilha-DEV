@@ -57,9 +57,19 @@
   align-items: flex-start;
   justify-content: center;
   gap: 0.4rem;
-  padding: 0.8rem;
+  padding: 1.6rem;
 }
 
 .card-text-container > * {
   padding: 0 0.8rem;
+}
+
+.answered-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.answered-date {
+  color: var(--ink-dark-gray)
 }

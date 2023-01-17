@@ -1,21 +1,7 @@
-.history-wrapper {
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
 .history-header {
   display: flex;
   align-items: center;
   height: 12rem;
   width: 100%;
   max-width: 1144px;
-  padding: 0 0 2.6rem 0;
-}
-
-.history-header-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid var(--ink-gray);
 }
