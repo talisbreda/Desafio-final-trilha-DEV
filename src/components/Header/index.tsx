@@ -23,7 +23,7 @@ export const Header = () => {
         <h1 className='display2'>Juana Antonieta</h1>
       </div>
       <div className='header-options'>
-        <Link to='/home' className='p-medium'>
+        <Link to='/history' className='p-medium'>
           Histórico
         </Link>
         <button

@@ -7,6 +7,7 @@ type QuizState = {
   currentQuiz: Quiz;
   questions: Questions;
   quizzes: Array<Quiz>;
+  answeredQuizzes: Array<Quiz>;
 };
 
 export const quizzesState: QuizState = {
@@ -39,4 +40,5 @@ export const quizzesState: QuizState = {
     ],
   },
   quizzes: [],
+  answeredQuizzes: [],
 };

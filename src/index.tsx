@@ -10,6 +10,7 @@ import { Recover } from './templates/Recover';
 import { RegisterPage } from './templates/RegisterPage';
 import { QuizPage } from './templates/QuizPage';
 import { Results } from './templates/Results';
+import { History } from './templates/History';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -26,6 +27,7 @@ root.render(
         <Route path='/details' element={<QuizDetails />} />
         <Route path='/quiz' element={<QuizPage />} />
         <Route path='/results' element={<Results />} />
+        <Route path='/history' element={<History />} />
       </Routes>
     </BrowserRouter>
   </UserDataContext>,

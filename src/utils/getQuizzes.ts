@@ -15,7 +15,7 @@ export type Quiz = {
   correct_answers_count: number;
 };
 
-export const getQuizzes = async () => {
+export const getQuizzes = () => {
   return axios.get(
     'https://my-json-server.typicode.com/higorpo/trilha-dev-json-server/quizzes',
   );
