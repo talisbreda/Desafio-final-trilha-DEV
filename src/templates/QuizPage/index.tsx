@@ -41,6 +41,7 @@ export const QuizPage = () => {
   const setNextQuestion = () => {
     resetOptionsStyle();
     questionIndex.current += 1;
+    setAnswered(false);
     quizzesState.answered = false;
     setCurrentQuestion(questions.data[questionIndex.current]);
   };
