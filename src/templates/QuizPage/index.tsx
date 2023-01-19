@@ -22,9 +22,9 @@ export const QuizPage = () => {
   const setQuestionAsAnswered = (isCorrect: boolean) => {
     setAnswered(true);
     quizzesState.answered = true;
-    quizzesState.correctAnswers = isCorrect
-      ? quizzesState.correctAnswers + 1
-      : quizzesState.correctAnswers;
+    quizzesState.numberOfCorrectAnswers = isCorrect
+      ? quizzesState.numberOfCorrectAnswers + 1
+      : quizzesState.numberOfCorrectAnswers;
   };
 
   const resetOptionsStyle = () => {

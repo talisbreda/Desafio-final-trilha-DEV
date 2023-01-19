@@ -5,14 +5,18 @@ import { quizzesState } from '../../contexts/QuizContext';
 import './styles.css';
 
 export const Results = () => {
-  const { correctAnswers, currentQuiz } = quizzesState;
+  const { numberOfCorrectAnswers, currentQuiz } = quizzesState;
   const navigate = useNavigate();
-  if (correctAnswers > currentQuiz.correct_answers_count) {
-    currentQuiz.correct_answers_count = correctAnswers;
-    currentQuiz.answered_date = new Date().toISOString().slice(0, 10);
+  if (
+    numberOfCorrectAnswers > currentQuiz.correct_answers_count ||
+    currentQuiz.correct_answers_count === null
+  ) {
+    currentQuiz.correct_answers_count = numberOfCorrectAnswers;
   }
+  currentQuiz.answered_date = new Date().toISOString().slice(0, 10);
 
-  const acedQuiz = correctAnswers === currentQuiz.questions_count;
+  const acedQuiz: boolean =
+    numberOfCorrectAnswers === currentQuiz.questions_count;
 
   const heading = acedQuiz ? 'Você é um mestre' : 'Quase lá...';
   const text = acedQuiz
@@ -29,7 +33,7 @@ export const Results = () => {
       <div className='wrapper results-wrapper'>
         <h1 className='heading1'>Resultados</h1>
         <div className='result-container'>
-          <h1 className='display1'>{`${correctAnswers}/${currentQuiz.questions_count}`}</h1>
+          <h1 className='display1'>{`${numberOfCorrectAnswers}/${currentQuiz.questions_count}`}</h1>
           <div className='result-text-container'>
             <h1 className='heading1'>{heading}</h1>
             <p className='p-large result-text'>{text}</p>

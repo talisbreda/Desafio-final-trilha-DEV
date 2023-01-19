@@ -11,13 +11,44 @@
   justify-content: center;
 }
 
+.home-body {
+  padding: 4.8rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
 .cards-container {
   width: 100%;
   max-width: 1144px;
-  padding: 4.8rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(552px, 1fr));
   gap: 4rem;
+}
+
+.results-found {
+  width: 100%;
+  max-width: 1144px;
+}
+
+.no-results-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.no-results-found-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px;
+  gap: 8px
+}
+
+.no-results-found-text > * {
+  text-align: center;
 }
 
 @media (max-width: 1144px) {

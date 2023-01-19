@@ -1,18 +1,44 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { InputField } from '../InputField';
+import { SearchField } from '../SearchField';
 import './styles.css';
 
-const ThemeMenu = () => (
-  <div className='theme-menu hide'>
-    <div className='theme-option btn-medium'>#HTML</div>
-    <div className='theme-option btn-medium'>#UX</div>
-    <div className='theme-option btn-medium'>#SWIFT</div>
-    <div className='theme-option btn-medium'>#UI</div>
-  </div>
-);
+const ThemeMenu = ({
+  handleSearch,
+}: {
+  handleSearch: (theme?: string | null) => void;
+}) => {
+  const themes = ['HTML', 'UX', 'SWIFT', 'UI'];
 
-export const Header = () => {
+  return (
+    <div className='theme-menu hide'>
+      {themes.map((theme) => {
+        return (
+          <div
+            style={{ cursor: 'pointer' }}
+            className='theme-option btn-medium'
+            onClick={(e) => {
+              handleSearch(e.currentTarget.textContent);
+              e.currentTarget.style.backgroundColor = 'blue';
+            }}
+            role='button'
+            tabIndex={0}
+            key={theme}
+          >
+            {theme}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export const Header = ({
+  handleSearch,
+}: {
+  handleSearch: (theme?: string | null) => void;
+}) => {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   const handleThemeDropdown = () => setShowThemeMenu((r) => !r);
   const collapseMenu = showThemeMenu ? handleThemeDropdown : undefined;
@@ -35,9 +61,9 @@ export const Header = () => {
           className='p-medium theme-button'
         >
           Temas
-          {showThemeMenu ? <ThemeMenu /> : null}
+          {showThemeMenu ? <ThemeMenu handleSearch={handleSearch} /> : null}
         </button>
-        <InputField placeholder='Pesquisar quiz' type='search' />
+        <SearchField placeholder='Pesquisar quiz' handleSearch={handleSearch} />
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import './styles.css';
 import show from '../../assets/images/show-password.svg';
 import hide from '../../assets/images/hide-password.svg';
-import search from '../../assets/images/search-icon.svg';
 import { globalContext } from '../../contexts/UserDataContext';
 
 export const InputField = ({
@@ -27,12 +26,6 @@ export const InputField = ({
     }
   };
 
-  const handleSearch = () => {
-    const searchInput = document.querySelector(
-      '.search-input',
-    ) as HTMLInputElement;
-  };
-
   const context = useContext(globalContext);
   const { setData } = context;
 
@@ -55,15 +48,6 @@ export const InputField = ({
             src={visibilityIcon}
             alt='Show password'
           />
-        </button>
-      )}
-      {type === 'search' && (
-        <button
-          onClick={handleSearch}
-          type='button'
-          className='button-input-icon'
-        >
-          <img className='input-icon' src={search} alt='Search' />
         </button>
       )}
     </div>
