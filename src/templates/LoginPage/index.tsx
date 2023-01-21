@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 import icon from '../../assets/images/quiz-icon.svg';
 import { InputField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import { login } from '../../utils/login';
-import { globalContext } from '../../contexts/UserDataContext';
+import { data } from '../../contexts/UserDataContext/data';
 
 export const LoginPage = () => {
-  const { email, password } = useContext(globalContext);
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    await login(email, password);
+    await login().then((r) => {
+      data.name = r.data.name;
+    });
     navigate('/home');
   };
 

@@ -1,16 +1,12 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import { globalContext } from '../../contexts/UserDataContext';
 import { login } from '../../utils/login';
 import './styles.css';
 
 export const RegisterPage = () => {
-  const { email, password } = useContext(globalContext);
-
   const handleClick = async () => {
-    await login(email, password);
+    await login();
   };
 
   return (

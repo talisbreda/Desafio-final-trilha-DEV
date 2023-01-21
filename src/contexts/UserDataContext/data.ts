@@ -13,7 +13,7 @@ export type UserData = {
 };
 
 export const data: UserData = {
-  name: '',
+  name: 'Juana Antonieta',
   email: '',
   password: '',
   setData: {
