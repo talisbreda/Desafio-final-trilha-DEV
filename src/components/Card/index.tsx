@@ -21,9 +21,15 @@ export const Card = ({
   } = data;
   const moreThanHalfQuestionsCorrect =
     correct_answers_count > questions_count / 2;
+
   const performanceTextColor = moreThanHalfQuestionsCorrect
     ? 'var(--color-success)'
     : 'var(--color-error)';
+
+  const formattedDate =
+    answered_date !== null
+      ? answered_date.slice(0, 10).replaceAll('-', '/')
+      : null;
 
   return (
     <button onClick={onClick} type='button' className='card-button'>
@@ -39,9 +45,7 @@ export const Card = ({
                 style={{ color: performanceTextColor }}
                 className='p-small'
               >{`Você acertou ${correct_answers_count} de ${questions_count}`}</p>
-              <p className='answered-date p-small'>{`Em ${answered_date
-                .slice(0, 10)
-                .replaceAll('-', '/')}`}</p>
+              <p className='answered-date p-small'>{`Em ${formattedDate}`}</p>
             </div>
           )}
 

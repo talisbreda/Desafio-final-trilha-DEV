@@ -12,7 +12,7 @@ export const SearchField = ({
       <input
         className='search-input input-text input-field'
         placeholder={placeholder}
-        type='search'
+        type='text'
         onChange={handleSearch}
       />
       <button
