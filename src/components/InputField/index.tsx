@@ -35,7 +35,9 @@ export const InputField = ({
         className={`${type.toLowerCase()}-input input-text input-field`}
         placeholder={placeholder}
         type={type}
-        onChange={(s) => setData[type](s.target.value)}
+        onChange={(s) => {
+          setData[type](s.target.value);
+        }}
       />
       {type === 'password' && (
         <button

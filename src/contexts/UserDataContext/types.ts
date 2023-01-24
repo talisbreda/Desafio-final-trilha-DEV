@@ -9,4 +9,5 @@ export type UserData = {
   email: string;
   password: string;
   setData: AuthSetters;
+  resetData: () => void;
 };

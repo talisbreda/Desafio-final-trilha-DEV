@@ -8,7 +8,7 @@ export const UserDataContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [name, setName] = useState<string>('Juana Antonieta');
+  const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -18,8 +18,16 @@ export const UserDataContextProvider = ({
     password: setPassword,
   };
 
+  const resetData = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
+
   return (
-    <UserDataContext.Provider value={{ name, email, password, setData }}>
+    <UserDataContext.Provider
+      value={{ name, email, password, setData, resetData }}
+    >
       {children}
     </UserDataContext.Provider>
   );
