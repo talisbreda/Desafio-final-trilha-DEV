@@ -1,11 +1,15 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { Button } from '../../components/Button';
-import { quizzesState } from '../../contexts/QuizContext';
+import { QuizContext } from '../../contexts/QuizContext/context';
+import { QuizState } from '../../contexts/QuizContext/types';
 import './styles.css';
 
 export const Results = () => {
-  const { numberOfCorrectAnswers, currentQuiz } = quizzesState;
+  const { numberOfCorrectAnswers, currentQuiz } = useContext(
+    QuizContext,
+  ) as QuizState;
   const navigate = useNavigate();
   if (
     numberOfCorrectAnswers > currentQuiz.correct_answers_count ||

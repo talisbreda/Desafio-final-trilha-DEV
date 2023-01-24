@@ -1,16 +1,23 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
-import { quizzesState } from '../../contexts/QuizContext';
+import { QuizState } from '../../contexts/QuizContext/types';
 import './styles.css';
 import { QuestionOption } from '../../components/QuestionOption';
 import { Button } from '../../components/Button';
+import { QuizContext } from '../../contexts/QuizContext/context';
 
 export const QuizPage = () => {
   const questionIndex = useRef(0);
   const navigate = useNavigate();
-  const { questions } = quizzesState;
-  const [answered, setAnswered] = useState(quizzesState.answered);
+
+  const {
+    questions,
+    answered,
+    setAnswered,
+    numberOfCorrectAnswers,
+    setNumberOfCorrectAnswers,
+  } = useContext(QuizContext) as QuizState;
   const [currentQuestion, setCurrentQuestion] = useState(
     questions.data[questionIndex.current],
   );
@@ -21,10 +28,10 @@ export const QuizPage = () => {
 
   const setQuestionAsAnswered = (isCorrect: boolean) => {
     setAnswered(true);
-    quizzesState.answered = true;
-    quizzesState.numberOfCorrectAnswers = isCorrect
-      ? quizzesState.numberOfCorrectAnswers + 1
-      : quizzesState.numberOfCorrectAnswers;
+    const correctAnswers = isCorrect
+      ? numberOfCorrectAnswers + 1
+      : numberOfCorrectAnswers;
+    setNumberOfCorrectAnswers(correctAnswers);
   };
 
   const resetOptionsStyle = () => {
@@ -42,7 +49,6 @@ export const QuizPage = () => {
     resetOptionsStyle();
     questionIndex.current += 1;
     setAnswered(false);
-    quizzesState.answered = false;
     setCurrentQuestion(questions.data[questionIndex.current]);
   };
 

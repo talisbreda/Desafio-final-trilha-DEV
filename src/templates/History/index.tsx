@@ -1,16 +1,18 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { Card } from '../../components/Card';
-import { quizzesState } from '../../contexts/QuizContext';
+import { QuizContext } from '../../contexts/QuizContext/context';
+import { QuizState } from '../../contexts/QuizContext/types';
 import { Quiz } from '../../utils/getQuizzes';
 import './styles.css';
 
 export const History = () => {
-  const { quizzes } = quizzesState;
+  const { quizzes, setCurrentQuiz } = useContext(QuizContext) as QuizState;
   const navigate = useNavigate();
 
   const handleQuizClick = (quiz: Quiz) => {
-    quizzesState.currentQuiz = quiz;
+    setCurrentQuiz(quiz);
     navigate('/details');
   };
 

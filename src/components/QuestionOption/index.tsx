@@ -1,4 +1,6 @@
-import { quizzesState } from '../../contexts/QuizContext';
+import { useContext } from 'react';
+import { QuizContext } from '../../contexts/QuizContext/context';
+import { QuizState } from '../../contexts/QuizContext/types';
 import './styles.css';
 
 export const QuestionOption = ({
@@ -15,8 +17,10 @@ export const QuestionOption = ({
   const letters = ['A', 'B', 'C', 'D', 'E'];
   const borderOnClick = correct ? 'var(--color-success)' : 'var(--color-error)';
 
+  const { answered } = useContext(QuizContext) as QuizState;
+
   const handleClick = () => {
-    if (!quizzesState.answered) {
+    if (!answered) {
       const container = document.querySelector(
         `.answer${index}`,
       ) as HTMLDivElement;

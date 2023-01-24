@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
-import { quizzesState } from '../../contexts/QuizContext';
+import { QuizState } from '../../contexts/QuizContext/types';
 import { getQuizzes, Quiz } from '../../utils/getQuizzes';
 import noResultsFoundImage from '../../assets/images/no-results-found.svg';
 import './styles.css';
+import { QuizContext } from '../../contexts/QuizContext/context';
 
 const NoSearchResults = () => {
   return (
@@ -27,7 +28,13 @@ const NoSearchResults = () => {
 export const Home = () => {
   const isMounted = useRef(true);
   const navigate = useNavigate();
-  const [quizzes, setQuizzes] = useState(quizzesState.filteredQuizzes);
+  const {
+    quizzes,
+    filteredQuizzes,
+    setCurrentQuiz,
+    setQuizzes,
+    setFilteredQuizzes,
+  } = useContext(QuizContext) as QuizState;
   const isSearching = useRef(false);
   const amountOfResultsFound = useRef(0);
 
@@ -35,22 +42,21 @@ export const Home = () => {
     if (isMounted.current && quizzes.length === 0) {
       getQuizzes().then((r) => {
         setQuizzes(r.data);
-        quizzesState.quizzes = r.data;
       });
     }
 
     return () => {
       isMounted.current = false;
     };
-  }, [quizzes]);
+  });
 
   const handleQuizClick = (quiz: Quiz) => {
-    quizzesState.currentQuiz = quiz;
+    setCurrentQuiz(quiz);
     navigate('/details');
   };
 
   const resetSearch = () => {
-    quizzesState.filteredQuizzes = [];
+    setFilteredQuizzes([]);
     amountOfResultsFound.current = 0;
   };
 
@@ -65,33 +71,34 @@ export const Home = () => {
     return value;
   };
 
-  const handleEmptySearch = (value: string) => {
-    isSearching.current = true;
-    if (value === '') {
-      setQuizzes(quizzesState.quizzes);
-      isSearching.current = false;
-    }
-  };
-
   const searchQuizzesFor = (value: string) => {
-    quizzesState.quizzes.forEach((quiz: Quiz) => {
+    const temporaryListOfQuizzes: Quiz[] = [];
+    quizzes.forEach((quiz: Quiz) => {
       if (quiz.title.toLowerCase().includes(value.toLowerCase())) {
-        quizzesState.filteredQuizzes.push(quiz);
+        temporaryListOfQuizzes.push(quiz);
         amountOfResultsFound.current += 1;
       }
     });
+    setFilteredQuizzes(temporaryListOfQuizzes);
+  };
+
+  const handleEmptySearch = (value: string) => {
+    isSearching.current = value !== '';
+    if (value === '') {
+      setFilteredQuizzes([]);
+    }
   };
 
   const handleSearch = (theme?: string | null) => {
     resetSearch();
     const value = getSearchInput(theme);
-    handleEmptySearch(value);
     searchQuizzesFor(value);
-    setQuizzes(quizzesState.filteredQuizzes);
+    handleEmptySearch(value);
   };
 
   const counter = useRef(0);
   counter.current += 1;
+  const quizzesToBeShown = isSearching.current ? filteredQuizzes : quizzes;
 
   return (
     <div className='wrapper home-wrapper'>
@@ -108,7 +115,7 @@ export const Home = () => {
           <NoSearchResults />
         )}
         <div className='cards-container'>
-          {quizzes.map((quiz: Quiz) => {
+          {quizzesToBeShown.map((quiz: Quiz) => {
             return (
               <Card
                 key={quiz.id}
@@ -117,6 +124,16 @@ export const Home = () => {
               />
             );
           })}
+          {/* {!isSearching.current &&
+            quizzes.map((quiz: Quiz) => {
+              return (
+                <Card
+                  key={quiz.id}
+                  data={quiz}
+                  onClick={() => handleQuizClick(quiz)}
+                />
+              );
+            })} */}
         </div>
       </div>
     </div>

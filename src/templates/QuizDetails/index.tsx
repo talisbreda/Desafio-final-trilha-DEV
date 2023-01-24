@@ -1,19 +1,22 @@
 import './styles.css';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Difficulty } from '../../components/Difficulty';
-import { quizzesState } from '../../contexts/QuizContext';
+import { QuizState } from '../../contexts/QuizContext/types';
 import { BackButton } from '../../components/BackButton';
 import { getQuizQuestions } from '../../utils/getQuizQuestions';
+import { QuizContext } from '../../contexts/QuizContext/context';
 
 export const QuizDetails = () => {
-  const quiz = quizzesState.currentQuiz;
-  quizzesState.answered = false;
-  quizzesState.numberOfCorrectAnswers = 0;
+  const { currentQuiz, setAnswered, setNumberOfCorrectAnswers, setQuestions } =
+    useContext(QuizContext) as QuizState;
+  setAnswered(false);
+  setNumberOfCorrectAnswers(0);
   const navigate = useNavigate();
 
-  getQuizQuestions(quiz.id).then((r) => {
-    quizzesState.questions = r.data;
+  getQuizQuestions(currentQuiz.id).then((r) => {
+    setQuestions(r.data);
   });
 
   const startQuiz = () => {
@@ -24,18 +27,22 @@ export const QuizDetails = () => {
     <>
       <BackButton to='/home' />
       <div className='wrapper details-wrapper'>
-        <h1 className='display2'>{quiz.title}</h1>
+        <h1 className='display2'>{currentQuiz.title}</h1>
         <div className='quiz-image-container'>
-          <img className='quiz-image' src={quiz.banner_image} alt='card' />
-          <Difficulty difficulty={quiz.difficulty} />
+          <img
+            className='quiz-image'
+            src={currentQuiz.banner_image}
+            alt='card'
+          />
+          <Difficulty difficulty={currentQuiz.difficulty} />
         </div>
         <div className='quiz-details about-quiz'>
           <h2 className='heading2'>Sobre o quiz</h2>
-          <p className='p-medium'>{quiz.description}</p>
+          <p className='p-medium'>{currentQuiz.description}</p>
         </div>
         <div className='quiz-details questions-amount'>
           <h2 className='heading2'>Quantidade de perguntas</h2>
-          <p className='p-medium'>{quiz.questions_count}</p>
+          <p className='p-medium'>{currentQuiz.questions_count}</p>
         </div>
         <Button onClick={startQuiz} text='Fazer Tentativa' />
       </div>
