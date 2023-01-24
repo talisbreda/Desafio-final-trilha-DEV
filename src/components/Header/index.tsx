@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserDataContext } from '../../contexts/UserDataContext';
+import { UserData } from '../../contexts/UserDataContext/types';
 import { SearchField } from '../SearchField';
 import './styles.css';
-import { data } from '../../contexts/UserDataContext/data';
 
 const ThemeMenu = ({
   handleSearch,
@@ -44,7 +45,7 @@ export const Header = ({
   const handleThemeDropdown = () => setShowThemeMenu((r) => !r);
   const collapseMenu = showThemeMenu ? handleThemeDropdown : undefined;
   const expandMenu = showThemeMenu ? undefined : handleThemeDropdown;
-  const { name } = data;
+  const { name } = useContext(UserDataContext) as UserData;
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions

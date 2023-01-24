@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QuizDetails } from './templates/QuizDetails';
-import { UserDataContext } from './contexts/UserDataContext';
+import { UserDataContextProvider } from './contexts/UserDataContext';
 import './styles/global-styles.css';
 import { Home } from './templates/Home';
 import { LoginPage } from './templates/LoginPage/index';
@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
-  <UserDataContext>
+  <UserDataContextProvider>
     <QuizProvider>
       <BrowserRouter>
         <Routes>
@@ -33,5 +33,5 @@ root.render(
         </Routes>
       </BrowserRouter>
     </QuizProvider>
-  </UserDataContext>,
+  </UserDataContextProvider>,
 );

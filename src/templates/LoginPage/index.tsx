@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 import icon from '../../assets/images/quiz-icon.svg';
 import { InputField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import { login } from '../../utils/login';
-import { data } from '../../contexts/UserDataContext/data';
+import { UserDataContext } from '../../contexts/UserDataContext';
+import { UserData } from '../../contexts/UserDataContext/types';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { setData } = useContext(UserDataContext) as UserData;
 
   const handleClick = async () => {
     await login().then((r) => {
-      data.name = r.data.name;
+      setData.name(r.data.name);
     });
     navigate('/home');
   };
