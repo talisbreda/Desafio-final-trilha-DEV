@@ -3,7 +3,7 @@ const defaultEmailExpression =
 const defaultPasswordExpression =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-export const inputIsValid = {
+const inputIsValid = {
   name: (value: string) => {
     if (value.length < 2) {
       return false;
@@ -24,7 +24,7 @@ export const inputIsValid = {
   },
 };
 
-export const getInvalidInputs = ({
+const getInvalidInputs = ({
   name,
   email,
   password,
@@ -44,4 +44,39 @@ export const getInvalidInputs = ({
     invalidInputs.push('senha');
   }
   return invalidInputs;
+};
+
+type UserLoginInformation = {
+  name?: string;
+  email?: string;
+  password?: string;
+};
+
+export type InvalidInputsData = {
+  string: string;
+  amount: number;
+  exists: boolean;
+};
+
+export const handleInvalidInputs = (info: UserLoginInformation) => {
+  let invalidFieldsString = '';
+  let invalidInputsExist = false;
+  let amountOfInvalidInputs = 0;
+
+  const invalidInputsList = getInvalidInputs({ ...info });
+  if (invalidInputsList.length === 0) {
+    invalidInputsExist = false;
+  } else {
+    invalidFieldsString = invalidInputsList.join(', ');
+    invalidInputsExist = true;
+    amountOfInvalidInputs = invalidInputsList.length;
+  }
+
+  const data: InvalidInputsData = {
+    string: invalidFieldsString,
+    amount: amountOfInvalidInputs,
+    exists: invalidInputsExist,
+  };
+
+  return data;
 };

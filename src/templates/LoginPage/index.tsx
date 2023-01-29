@@ -7,26 +7,32 @@ import { Button } from '../../components/Button';
 import { login } from '../../utils/login';
 import { UserDataContext } from '../../contexts/UserDataContext';
 import { UserData } from '../../contexts/UserDataContext/types';
-import { getInvalidInputs } from '../../utils/inputChecker';
+import {
+  handleInvalidInputs,
+  InvalidInputsData,
+} from '../../utils/inputChecker';
+import { InvalidInputsMessage } from '../../components/InvalidInputsMessage';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const { email, password, setData } = useContext(UserDataContext) as UserData;
 
-  const [invalidFieldsString, setInvalidFieldsString] = useState('');
-  const [invalidInputsExist, setInvalidInputsExist] = useState(false);
+  const invalidInfoObject: InvalidInputsData = {
+    amount: 0,
+    exists: true,
+    string: '',
+  };
+
+  const [invalidInputsData, setInvalidInputsData] = useState(invalidInfoObject);
 
   const handleClick = async () => {
-    const invalidInputsList = getInvalidInputs({ email, password });
-    if (invalidInputsList.length === 0) {
+    const inputsData = handleInvalidInputs({ email, password });
+    setInvalidInputsData(inputsData);
+    if (!inputsData.exists) {
       await login().then((r) => {
         setData.name(r.data.name);
       });
-      setInvalidInputsExist(false);
       navigate('/home');
-    } else {
-      setInvalidFieldsString(invalidInputsList.join(', '));
-      setInvalidInputsExist(true);
     }
   };
 
@@ -39,12 +45,11 @@ export const LoginPage = () => {
         <h1 className='display1'>Entrar</h1>
         <InputField placeholder='E-mail' type='email' />
         <InputField placeholder='Password' type='password' />
-        {invalidInputsExist && (
-          <p
-            className='p-medium'
-            style={{ color: 'var(--color-error)' }}
-          >{`Os campos ${invalidFieldsString} estão inválidos`}</p>
-        )}
+        <InvalidInputsMessage
+          amountOfInvalidInputs={invalidInputsData.amount}
+          invalidFieldsString={invalidInputsData.string}
+          invalidInputsExist={invalidInputsData.exists}
+        />
         <Link className='btn-medium' to='/recover'>
           Esqueceu sua senha?
         </Link>
