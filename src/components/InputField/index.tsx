@@ -8,9 +8,11 @@ import { UserData } from '../../contexts/UserDataContext/types';
 export const InputField = ({
   placeholder,
   type,
+  innerRef,
 }: {
   placeholder: string;
   type: 'name' | 'email' | 'password';
+  innerRef: React.RefObject<HTMLInputElement>;
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const visibilityIcon = passwordVisible ? hide : show;
@@ -38,6 +40,7 @@ export const InputField = ({
         onChange={(s) => {
           setData[type](s.target.value);
         }}
+        ref={innerRef}
       />
       {type === 'password' && (
         <button

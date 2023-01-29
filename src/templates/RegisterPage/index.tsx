@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
@@ -13,10 +13,11 @@ import { login } from '../../utils/login';
 import './styles.css';
 
 export const RegisterPage = () => {
-  const { name, email, password, setData } = useContext(
-    UserDataContext,
-  ) as UserData;
+  const { setData } = useContext(UserDataContext) as UserData;
   const navigate = useNavigate();
+  const name = useRef<HTMLInputElement>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
 
   const invalidInfoObject: InvalidInputsData = {
     amount: 0,
@@ -27,7 +28,11 @@ export const RegisterPage = () => {
   const [invalidInputsData, setInvalidInputsData] = useState(invalidInfoObject);
 
   const handleClick = async () => {
-    const inputsData = handleInvalidInputs({ name, email, password });
+    const inputsData = handleInvalidInputs({
+      name: name.current?.value,
+      email: email.current?.value,
+      password: password.current?.value,
+    });
     setInvalidInputsData(inputsData);
     if (!inputsData.exists) {
       await login().then((r) => {
@@ -41,9 +46,9 @@ export const RegisterPage = () => {
     <div className='wrapper register-wrapper'>
       <h1 className='display1'>Cadastre-se</h1>
       <p className='p-large register-p'>Crie uma conta gratuitamente</p>
-      <InputField placeholder='Nome' type='name' />
-      <InputField placeholder='E-mail' type='email' />
-      <InputField placeholder='Senha' type='password' />
+      <InputField placeholder='Nome' type='name' innerRef={name} />
+      <InputField placeholder='E-mail' type='email' innerRef={email} />
+      <InputField placeholder='Senha' type='password' innerRef={password} />
       <InvalidInputsMessage
         amountOfInvalidInputs={invalidInputsData.amount}
         invalidFieldsString={invalidInputsData.string}

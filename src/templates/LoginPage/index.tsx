@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 import icon from '../../assets/images/quiz-icon.svg';
@@ -15,7 +15,9 @@ import { InvalidInputsMessage } from '../../components/InvalidInputsMessage';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { email, password, setData } = useContext(UserDataContext) as UserData;
+  const { setData } = useContext(UserDataContext) as UserData;
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
 
   const invalidInfoObject: InvalidInputsData = {
     amount: 0,
@@ -26,7 +28,10 @@ export const LoginPage = () => {
   const [invalidInputsData, setInvalidInputsData] = useState(invalidInfoObject);
 
   const handleClick = async () => {
-    const inputsData = handleInvalidInputs({ email, password });
+    const inputsData = handleInvalidInputs({
+      email: email.current?.value,
+      password: password.current?.value,
+    });
     setInvalidInputsData(inputsData);
     if (!inputsData.exists) {
       await login().then((r) => {
@@ -43,8 +48,12 @@ export const LoginPage = () => {
       </div>
       <div className='input-container'>
         <h1 className='display1'>Entrar</h1>
-        <InputField placeholder='E-mail' type='email' />
-        <InputField placeholder='Password' type='password' />
+        <InputField placeholder='E-mail' type='email' innerRef={email} />
+        <InputField
+          placeholder='Password'
+          type='password'
+          innerRef={password}
+        />
         <InvalidInputsMessage
           amountOfInvalidInputs={invalidInputsData.amount}
           invalidFieldsString={invalidInputsData.string}
